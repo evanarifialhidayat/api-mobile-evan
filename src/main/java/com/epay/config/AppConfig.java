@@ -10,8 +10,10 @@ package com.epay.config;
  */
 
 import com.epay.dao.impl.CustommerContrelerNewImpl;
-import com.epay.dao.impl.CustommerImpl;
+import com.epay.dao.impl.CustomerControllerImpl;
 import com.epay.dao.impl.conLoginImpl;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.logging.Logger;
 import javax.sql.DataSource;
 import org.apache.commons.dbcp.BasicDataSource;
@@ -37,7 +39,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.TransactionManagementConfigurer;
 
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-import sample.mybatis.persistence.UserMapper;
+//import sample.mybatis.persistence.UserMapper;
 
 
 //@ComponentScan(basePackages="com.epay")
@@ -46,6 +48,7 @@ import sample.mybatis.persistence.UserMapper;
 @Configuration
 @ComponentScan(basePackages = { "com.epay" }, excludeFilters = { @Filter(type = FilterType.ANNOTATION, value = Configuration.class)})
 @PropertySource("classpath:sqlmap.properties")
+//@MapperScan(basePackages="com.epay.dao.impl")
 //@MapperScan(basePackages="com.epay.mappers")
 public class AppConfig extends WebMvcConfigurerAdapter{
         
@@ -53,7 +56,7 @@ public class AppConfig extends WebMvcConfigurerAdapter{
     private Environment environment;
     
     @Bean(destroyMethod = "close")
-    public DataSource dataSource(){
+    public DataSource dataSource() {
         BasicDataSource dataSource = new BasicDataSource();
         dataSource.setDriverClassName(environment.getRequiredProperty("jdbc.driver"));
         dataSource.setUrl(environment.getRequiredProperty("jdbc.url"));
@@ -68,7 +71,7 @@ public class AppConfig extends WebMvcConfigurerAdapter{
      public PlatformTransactionManager transactionManager() {
          return new DataSourceTransactionManager(dataSource());
      }
-    public PlatformTransactionManager annotationDrivenTransactionManager() {
+    public PlatformTransactionManager annotationDrivenTransactionManager() throws URISyntaxException {
          return transactionManager();
      }
 
@@ -80,18 +83,18 @@ public class AppConfig extends WebMvcConfigurerAdapter{
       return (SqlSessionFactory) sqlSessionFactory.getObject();
     }
 
-    @Bean
-    public CustommerImpl custommerImpmapperl() throws Exception {
-      SqlSessionTemplate sessionTemplate = new SqlSessionTemplate(sqlSessionFactory());
-      sessionTemplate.getConfiguration().addMapper(CustommerImpl.class); // new code
-      return sessionTemplate.getMapper(CustommerImpl.class);
-    }
-     @Bean
-    public CustommerContrelerNewImpl CustommerContrelerNewImpl() throws Exception {
-      SqlSessionTemplate sessionTemplate = new SqlSessionTemplate(sqlSessionFactory());
-      sessionTemplate.getConfiguration().addMapper(CustommerContrelerNewImpl.class); // new code
-      return sessionTemplate.getMapper(CustommerContrelerNewImpl.class);
-    }
+//    @Bean
+//    public CustomerControllerImpl custommerImpmapperl() throws Exception {
+//      SqlSessionTemplate sessionTemplate = new SqlSessionTemplate(sqlSessionFactory());
+//      sessionTemplate.getConfiguration().addMapper(CustomerControllerImpl.class); // new code
+//      return sessionTemplate.getMapper(CustomerControllerImpl.class);
+//    }
+//     @Bean
+//    public CustommerContrelerNewImpl CustommerContrelerNewImpl() throws Exception {
+//      SqlSessionTemplate sessionTemplate = new SqlSessionTemplate(sqlSessionFactory());
+//      sessionTemplate.getConfiguration().addMapper(CustommerContrelerNewImpl.class); // new code
+//      return sessionTemplate.getMapper(CustommerContrelerNewImpl.class);
+//    }
      
     @Bean
     public conLoginImpl conLoginImpl() throws Exception {

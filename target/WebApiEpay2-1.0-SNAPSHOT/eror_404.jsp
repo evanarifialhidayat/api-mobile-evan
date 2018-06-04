@@ -3,7 +3,7 @@
     Created on : Oct 9, 2016, 11:41:05 PM
     Author     : ADITYA
 --%>
-<%@ taglib prefix="s" uri="/struts-tags" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.2, user-scalable=yes" />
