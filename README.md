@@ -17,6 +17,7 @@ CREATE ROLE apr LOGIN
 
 
 =======================================================================================================
+
 CREATE SEQUENCE tblassignment_assignmentid_seq
   INCREMENT 1
   MINVALUE 1
@@ -25,7 +26,9 @@ CREATE SEQUENCE tblassignment_assignmentid_seq
   CACHE 1;
 ALTER TABLE tblassignment_assignmentid_seq
   OWNER TO apr;
+  
 =======================================================================================================
+
 CREATE SEQUENCE tblgroup_groupid_seq
   INCREMENT 1
   MINVALUE 1
@@ -36,6 +39,7 @@ ALTER TABLE tblgroup_groupid_seq
   OWNER TO apr;
 
 =======================================================================================================
+
 CREATE SEQUENCE tblmenuid_seq
   INCREMENT 10000
   MINVALUE 1
@@ -46,6 +50,7 @@ ALTER TABLE tblmenuid_seq
   OWNER TO apr;
 
 =======================================================================================================
+
   CREATE SEQUENCE tblmodule_moduleid_seq
   INCREMENT 1
   MINVALUE 1
@@ -54,7 +59,9 @@ ALTER TABLE tblmenuid_seq
   CACHE 1;
 ALTER TABLE tblmodule_moduleid_seq
   OWNER TO apr;
+  
 =======================================================================================================
+
   CREATE SEQUENCE tblpermission_permissionid_seq
   INCREMENT 1
   MINVALUE 1
@@ -63,7 +70,9 @@ ALTER TABLE tblmodule_moduleid_seq
   CACHE 1;
 ALTER TABLE tblpermission_permissionid_seq
   OWNER TO apr;
+  
 =======================================================================================================
+
   CREATE SEQUENCE tbluser_userid_seq
   INCREMENT 1
   MINVALUE 1
@@ -74,6 +83,7 @@ ALTER TABLE tbluser_userid_seq
   OWNER TO apr;
 
 =============================================================
+
 CREATE TABLE tbl_menu
 (
   menuid bigint NOT NULL DEFAULT nextval('tblmenuid_seq'::regclass),
@@ -90,7 +100,9 @@ WITH (
 );
 ALTER TABLE tbl_menu
   OWNER TO apr;
+  
 ===================================================================
+
 CREATE TABLE tbl_module
 (
   name character varying(255) DEFAULT NULL::character varying,
@@ -115,7 +127,9 @@ WITH (
 );
 ALTER TABLE tbl_module
   OWNER TO apr;
+  
 ===================================================================================================
+
 CREATE TABLE tblassignment
 (
   assignmentid bigint NOT NULL DEFAULT nextval('tblassignment_assignmentid_seq'::regclass),
@@ -130,7 +144,9 @@ ALTER TABLE tblassignment
   OWNER TO apr;
 COMMENT ON TABLE tblassignment
   IS 'stores company name';
+  
 =======================================================================================================
+
 CREATE TABLE tblgroup
 (
   groupid bigint NOT NULL DEFAULT nextval('tblgroup_groupid_seq'::regclass),
@@ -148,7 +164,9 @@ ALTER TABLE tblgroup
   OWNER TO apr;
 COMMENT ON TABLE tblgroup
   IS 'stores user group';
+  
 ========================================================================================================
+
   CREATE TABLE tblpermissions
 (
   permissionid bigint NOT NULL DEFAULT nextval('tblpermission_permissionid_seq'::regclass),
@@ -171,6 +189,7 @@ ALTER TABLE tblpermissions
   OWNER TO apr;
 
 =========================================================================================
+
 CREATE TABLE tblschema
 (
   schema_name character varying(25) NOT NULL,
@@ -184,6 +203,7 @@ ALTER TABLE tblschema
   OWNER TO apr;
 
 =============================================================================================
+
 CREATE TABLE tbluser
 (
   userid bigint NOT NULL DEFAULT nextval('tbluser_userid_seq'::regclass),
@@ -209,6 +229,7 @@ ALTER TABLE tbluser
 
 INSERT INTO tbluser( username, pwd, groupid, aprvalidasi, aprvalidasiuser, aprvalidasiuserguest, schema)
     VALUES ('adminApr', 'JcYMfTHY9bpWDUlMkBt6wg==', '15', '1', '1', '1', 'apr1');
+    
 ========================================================================================================
 
 url test heroku : https://api-mobile-evan.herokuapp.com/customers2/getlogin/adminApr/adminApr 
