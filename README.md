@@ -1,3 +1,7 @@
+heroku pg:psql --app api-mobile-evan;
+select * from pg_catalog.pg_tables;
+select * from pg_class;
+
 Databases postgressql 9.3 :
 CREATE DATABASE app_apr
   WITH OWNER = apr
